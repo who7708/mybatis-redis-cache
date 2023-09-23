@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.alibaba.fastjson2.JSONObject;
 import org.apache.ibatis.cache.CacheException;
 
 public final class SerializeUtil {
@@ -51,5 +52,13 @@ public final class SerializeUtil {
 			throw new CacheException(e);
 		}
 	}
+
+    public static String serializeStr(Object object) {
+        return JSONObject.toJSONString(object);
+    }
+
+    public static Object unserializeStr(String text) {
+        return JSONObject.parseObject(text);
+    }
 
 }
